@@ -1,0 +1,16 @@
+.holder-image {
+    max-width: 150px;
+    background-color: transparent;
+}
+
+.holder-book-preview {
+    display: flex;
+    gap: 25px;
+}
+
+.holder-book-preview-text {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: left;
+}
