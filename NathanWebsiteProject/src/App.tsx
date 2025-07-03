@@ -1,24 +1,60 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import './styles/textstyles.css'
 import './styles/pagestyles.css'
 import ObjectPreviewBook from './components/object-preview-book'
 import { Button } from 'react-bootstrap'
+import { db, storage } from './lib/firebase'
+import { collection, query, where, doc, setDoc, getDocs } from "firebase/firestore"
+import { getBlob, getDownloadURL, ref } from 'firebase/storage'
 
-var useEffectLock: boolean
+let useEffectLock: boolean
+
+const booksRef = collection(db, "books")
+
+type BookItem = { 
+    coverPath: string; 
+    title: string;
+    author: string;
+    comments: string;
+}
 
 function App() {
     const [count, setCount] = useState(0)
 
+    const [bookList, setBookList] = useState<BookItem[]>([])
+
+    async function GetData() {
+
+        const bcollection = collection(db, "books")
+
+        const bookSnap = await getDocs(bcollection)
+
+        let tempBook: BookItem
+        const tempBookArray: BookItem[] = []
+        let tempCoverPath: string
+
+
+        bookSnap.forEach((book) => {
+            getDownloadURL(ref(storage, book.data().cover))
+                .then((url) => {
+                    tempBook = {
+                        coverPath: url,
+                        title: book.data().title,
+                        author: book.data().author,
+                        comments: book.data().comments,
+                    }
+                    tempBookArray.push(tempBook)
+                })
+        })
+        setBookList(tempBookArray)
+    }
+
     useEffect(() => {
-
-        if (!useEffectLock) {
-            console.log("YAHOO");
-            useEffectLock = true;
-        }
-
+        GetData().then(() => {
+            console.log('finished');
+        })
     }, [])
 
 
@@ -26,15 +62,10 @@ function App() {
     <div className="page-parent" >
         <div className="custom-text-title" >
               List View
-              {count}
           </div>
 
-          <Button onClick={() => { setCount(count + 1) } }>
-                Increase count
-          </Button>
-
-
-        <ObjectPreviewBook given_bookFileName={'crimepunish.jpg'} given_bookTitle={'Crime and Punishment'} given_bookDesc={'Book written by Dostoevsky'}  />
+          {bookList.map((book, bookIndex) => { return (<ObjectPreviewBook key={bookIndex} given_index={bookIndex} given_bookFilePath={book.coverPath} given_bookTitle={book.title} given_bookDesc={book.comments} />) } ) }
+        
     </div>
   )
 }
