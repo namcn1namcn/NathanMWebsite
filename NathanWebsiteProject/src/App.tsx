@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState, React } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import './styles/textstyles.css'
 import './styles/pagestyles.css'

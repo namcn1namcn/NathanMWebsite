@@ -7,7 +7,6 @@ import "../styles/textstyles.css"
 import "../styles/object-preview-book.css"
 import { useState } from "react"
 import Cookie from "universal-cookie"
-import React from "react"
 
 interface ObjectPreviewBook_props {
     given_bookFilePath: string
