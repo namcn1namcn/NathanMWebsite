@@ -7,6 +7,7 @@ import "../styles/textstyles.css"
 import "../styles/object-preview-book.css"
 import { useState } from "react"
 import Cookie from "universal-cookie"
+import React from "react"
 
 interface ObjectPreviewBook_props {
     given_bookFilePath: string
@@ -67,7 +68,7 @@ export default function ObjectPreviewBook(props: ObjectPreviewBook_props) {
         }
         else {
             return (
-                <div className="book-preview">
+                <div className="book-preview" style={props.given_index == 0 ? { borderRadius: "10px 10px 0px 0px" } : {borderRadius: "0px" } }>
                     <img src={props.given_bookFilePath} className="cover-image" />
                     <div className="book-non-image">
                         <div className="book-upper">

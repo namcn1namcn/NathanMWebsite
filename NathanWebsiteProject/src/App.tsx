@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from 'react'
+import { useEffect, useState, React } from 'react'
 import './App.css'
 import './styles/textstyles.css'
 import './styles/pagestyles.css'
 import ObjectPreviewBook from './components/object-preview-book'
-import { Button } from 'react-bootstrap'
 import { db, storage } from './lib/firebase'
-import { collection, query, where, doc, setDoc, getDocs, orderBy } from "firebase/firestore"
-import { getBlob, getDownloadURL, ref } from 'firebase/storage'
+import { collection, getDocs } from 'firebase/firestore'
+import { getDownloadURL, ref } from 'firebase/storage'
 import type firebase from 'firebase/compat/app'
 
 let useEffectLock: boolean
@@ -70,12 +69,14 @@ function App() {
 
 
     return (
-        <div className=".page-parent">
-                <div style={loading ? { height: "100vh"} : { height: 0}} >
+        <div className="page-parent" >
+            <div style={loading ? { height: "100%"} : { height: 0}} >
                 {loading? "Loading" : ""}
             </div>
-            <div className="custom-text-title" >
-                Nathan's Books
+            <div className="page-header">
+                <div className="custom-text-title" >
+                    Nathan's Books
+                </div>
             </div>
             {bookList.sort((a,b) => a.timestamp < b.timestamp ? 1 : -1)
                     .map((book, bookIndex) => {

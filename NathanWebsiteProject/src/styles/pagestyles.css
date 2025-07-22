@@ -6,3 +6,12 @@
     height: 100dvh;
     width: 100%;
 }
+
+.page-header {
+    margin-bottom: 15px;
+    margin-top: -10px;
+    background-color: darkolivegreen;
+    width: 810px;
+    height: 200px;
+    border-radius: 10px;
+}
