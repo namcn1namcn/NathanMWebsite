@@ -22,7 +22,6 @@ type BookItem = {
 }
 
 function App() {
-    const [count, setCount] = useState(0)
     const [loading, setLoading] = useState(true)
     const [bookList, setBookList] = useState<BookItem[]>([])
 
