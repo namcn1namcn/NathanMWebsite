@@ -1,0 +1,67 @@
+.cover-image {
+    max-width: 250px;
+    max-height: 375px;
+    background-color: transparent;
+}
+
+.book-preview {
+    display: flex;
+    gap: 25px;
+    padding: 25px;
+}
+
+.book-non-image {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.book-upper {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    text-align: left;
+    justify-content: space-between;
+}
+
+.title-author-block {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    text-align: left;
+}
+
+.book-lower {
+    text-align: left;
+}
+
+.book-title {
+    font-weight: bolder;
+    font-size: 26px;
+    max-width: 400px;
+    max-height: 50px;
+}
+
+.book-author {
+    font-size: 20px;
+}
+
+.book-desc {
+    font-size: 16px;
+    width: 500px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.like-button-grey {
+    background-color: transparent;
+    width: 80px;
+}
+
+.like-button-green {
+    background-color: lightgreen;
+    width: 80px;
+    color: darkgreen;
+    display:flex;
+    text-align:center;
+}

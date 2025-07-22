@@ -1,0 +1,31 @@
+.input-block {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+.text-area {
+    width: 172px;
+    height: 300px;
+    font-size: 16px;
+}
+
+.text-input {
+    width: 170px;
+}
+
+.page-parent {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+}
+
+.successful-upload {
+    color: green;
+}

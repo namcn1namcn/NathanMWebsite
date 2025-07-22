@@ -1,0 +1,8 @@
+.page-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 100dvh;
+    width: 100%;
+}
